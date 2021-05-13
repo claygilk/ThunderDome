@@ -6,6 +6,7 @@ namespace ThunderDome
     {
         static void Main(string[] args)
         {
+            //Creates two fighters, boblin and hoblin. 
 
             monsterBlock boblin = new monsterBlock(7);
             boblin.race = "Goblin";
@@ -21,6 +22,7 @@ namespace ThunderDome
             hoblin.damageModifier = 2;
             hoblin.name = "Hoblin";
 
+            //And puts them in the thunderdome.
             monsterBlock.ThunderDome(boblin, hoblin);
 
 
@@ -33,18 +35,21 @@ namespace ThunderDome
 
 class monsterBlock
 {
+    //create properties for the class monsterBlock
     public string race;
-    private int maxhealth;
-    public int MaxHealth
-    {
-        get { return maxhealth; }
-    }
     public int currentHealth;
     public int armorClass;
     public int attackModifier;
     public int damageModifier;
     public string name;
     public bool isDead;
+    private int maxhealth;
+
+    //maxhealth is private because it should not be changed when damage is taken
+    public int MaxHealth
+    {
+        get { return maxhealth; }
+    }
 
     public monsterBlock(int inHealth)
     {
@@ -52,8 +57,10 @@ class monsterBlock
         currentHealth = inHealth;
     }
 
+    //Attac() method is called whenever a monsterBlock makes an attack
     public static int Attack(monsterBlock attacker, monsterBlock target)
     {
+        //Attack fails if either attacker or target is dead
         if (target.isDead == true)
         {
             Console.WriteLine($"{target.name} is already dead!");
@@ -70,9 +77,7 @@ class monsterBlock
             int attackRoll = roll.Next(1, 20);
             int toHit = attackRoll + attacker.attackModifier;
 
-            //Console.WriteLine($"Scimitar: {attackRoll + attackModifier} ({attackRoll} + {attackModifier}) to hit.");
-
-
+            //on a hit, calls takeDamage() method, to deal damage to the target
             if (toHit >= target.armorClass)
             {
                 int damageRoll = roll.Next(1, 6);
@@ -90,17 +95,21 @@ class monsterBlock
         }
 
     }
+    //method takeDamage() reduces the target's currentHealth on a hit. 
     public static int takeDamage(int damage, monsterBlock target)
     {
         target.currentHealth -= damage;
-
+        //if this method reduces the target's hp to 0, changes their status to dead
         if (target.currentHealth <= 0)
         {
             target.isDead = true;
+            target.currentHealth = 0;
         }
 
         return 1;
     }
+    //ThunderDome() method takes two monsterBlocks as arguments and makes them fight until one is dead
+    //Two Monsters Enter One Monster Leaves
     public static void ThunderDome(monsterBlock fighter1, monsterBlock fighter2)
     {
         int roundNum = 1;
