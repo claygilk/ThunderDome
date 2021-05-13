@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Student\\source\\repos\\ThunderDome\\ThunderDome\\ThunderDome.csproj": {}
+    "C:\\Users\\Student\\source\\repos\\testgitThunderDome\\ThunderDome\\ThunderDome\\ThunderDome\\ThunderDome.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Student\\source\\repos\\ThunderDome\\ThunderDome\\ThunderDome.csproj": {
+    "C:\\Users\\Student\\source\\repos\\testgitThunderDome\\ThunderDome\\ThunderDome\\ThunderDome\\ThunderDome.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Student\\source\\repos\\ThunderDome\\ThunderDome\\ThunderDome.csproj",
+        "projectUniqueName": "C:\\Users\\Student\\source\\repos\\testgitThunderDome\\ThunderDome\\ThunderDome\\ThunderDome\\ThunderDome.csproj",
         "projectName": "ThunderDome",
-        "projectPath": "C:\\Users\\Student\\source\\repos\\ThunderDome\\ThunderDome\\ThunderDome.csproj",
+        "projectPath": "C:\\Users\\Student\\source\\repos\\testgitThunderDome\\ThunderDome\\ThunderDome\\ThunderDome\\ThunderDome.csproj",
         "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Student\\source\\repos\\ThunderDome\\ThunderDome\\obj\\",
+        "outputPath": "C:\\Users\\Student\\source\\repos\\testgitThunderDome\\ThunderDome\\ThunderDome\\ThunderDome\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
