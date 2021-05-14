@@ -7,7 +7,7 @@ namespace ThunderDome
         static void Main(string[] args)
         {
             //Creates four different fighters to choose from. adds them to roster array
-
+            //new comment to test git ignore
             monsterBlock boblin = new goblinBlock("Boblin");
             monsterBlock gobo = new goblinBlock("Gobo");
             //monsterBlock braun = new bugbearBlock("Braun");
