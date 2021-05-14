@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace ThunderDome
 {
@@ -22,7 +23,7 @@ namespace ThunderDome
             get { return maxhealth; }
             set { maxhealth = value; }
         }
-        
+
 
         // monsterBlock constructor
         public monsterBlock(string inName)
@@ -37,38 +38,30 @@ namespace ThunderDome
         { }
 
 
-        //Display healthbar
+        //Display current health in console
         public static string healthBar(monsterBlock monster)
         {
-            double doubleCurrentHealth = ((double)monster.currentHealth / (double)monster.MaxHealth) * 10;
-            int intCurrentHealth = Convert.ToInt32(doubleCurrentHealth);
-            string hpChunks = "";
-            string hpEmpties = "";
-
-            for (int i = 0; i < intCurrentHealth; i++)
-            {
-                hpChunks += "#";
-            }
-            for (int i = 0; i < (10 - intCurrentHealth); i++)
-            {
-                hpEmpties += "_";
-            }
-
-            return $"HP: [{hpChunks}{hpEmpties}]";
+            return $"HP: [{monster.currentHealth}/{monster.MaxHealth}]";
         }
 
         //Attack() method is called whenever a monsterBlock makes an attack
-        public static int Attack(monsterBlock attacker, monsterBlock target)
+        public static int Attack(monsterBlock attacker, monsterBlock target, bool attackInConsole)
         {
             //Attack fails if either attacker or target is dead
             if (target.isDead == true)
             {
-                Console.WriteLine($"{target.name} is already dead!");
+                if (attackInConsole)
+                {
+                    Console.WriteLine($"{target.name} is already dead!");
+                }
                 return 0;
             }
             else if (attacker.isDead == true)
             {
-                Console.WriteLine($"{attacker.name} is already dead!");
+                if (attackInConsole)
+                {
+                    Console.WriteLine($"{attacker.name} is already dead!");
+                }
                 return 0;
             }
             else
@@ -83,13 +76,18 @@ namespace ThunderDome
                     int damageRoll = roll.Next(1, 6);
                     int damageDelt = damageRoll + attacker.damageModifier;
                     takeDamage(damageDelt, target);
-                    Console.WriteLine($"{attacker.name} hit {target.name} for {damageDelt} points of damage!\n");
-                    //Console.WriteLine($"{attacker.name} dealt {damageDelt} points of damage to {target.name} \n");
 
+                    if (attackInConsole)
+                    {
+                        Console.WriteLine($"{attacker.name} hit {target.name} for {damageDelt} points of damage!\n");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine($"{attacker.name} missed on {target.name}!\n");
+                    if (attackInConsole)
+                    {
+                        Console.WriteLine($"{attacker.name} missed on {target.name}!\n");
+                    }
                 }
                 return toHit;
             }
@@ -108,40 +106,81 @@ namespace ThunderDome
 
             return 1;
         }
+
+        public static void revivfy(monsterBlock target)
+        {
+            target.currentHealth = target.MaxHealth;
+            target.isDead = false;
+        }
+
+
         //ThunderDome() method takes two monsterBlocks as arguments and makes them fight until one is dead
         //Two Monsters Enter One Monster Leaves
-        public static void ThunderDome(monsterBlock fighter1, monsterBlock fighter2)
+        public static void ThunderDome(monsterBlock fighter1, monsterBlock fighter2, bool printWinnerToFile, bool playInConsole, int numOfMatches)
         {
-            int roundNum = 1;
-            do
+            for (int i = 1; i <= numOfMatches; i++)
             {
+                //rez the loser from the last match and heal the winner to full
+                revivfy(fighter1);
+                revivfy(fighter2);
 
-
-                if (fighter1.isDead == true)
+                int roundNum = 1;
+                //do-while loop to repeat each combat round
+                do
                 {
-                    Console.WriteLine($"____________________ Round: {roundNum} ____________________");
-                    Console.WriteLine($"{fighter2.name} WINS!!");
-                    break;
+
+
+                    if (fighter1.isDead == true)
+                    {
+                        //prints winner to console and logs
+                        if (playInConsole)
+                        {
+                            Console.WriteLine($"____________________ Round: {roundNum} ____________________");
+                            Console.WriteLine($"{fighter2.name} WINS!!");
+                        }
+                        if (printWinnerToFile)
+                        {
+                            writeLog.logWinner(fighter2.name, fighter1.name);
+                        }
+                        break;
+
+                    }
+                    else if (fighter2.isDead == true)
+                    {
+                        //prints winner to console and logs
+                        if (playInConsole)
+                        {
+                            Console.WriteLine($" ____________________ Round: {roundNum} ____________________ ");
+                            Console.WriteLine($"{fighter1.name} WINS!!");
+                        }
+                        if (printWinnerToFile)
+                        {
+                            writeLog.logWinner(fighter1.name, fighter2.name);
+                        }
+                        break;
+
+                    }
+                    else
+                    {
+                        //executes round of combat and writes to console
+                        if (playInConsole)
+                        {
+                            Console.WriteLine($" ____________________ Round: {roundNum} ____________________ ");
+                            Console.WriteLine($"{fighter1.name} {healthBar(fighter1)}               {fighter2.name} {healthBar(fighter2)}");
+                        }
+                        monsterBlock.Attack(fighter2, fighter1, playInConsole);
+                        monsterBlock.Attack(fighter1, fighter2, playInConsole);
+                        roundNum += 1;
+
+                    }
 
                 }
-                else if (fighter2.isDead == true)
-                {
-                    Console.WriteLine($" ____________________ Round: {roundNum} ____________________ ");
-                    Console.WriteLine($"{fighter1.name} WINS!!");
-                    break;
+                while (fighter1.isDead == false || fighter2.isDead == false);
 
-                }
-                else
-                {
-                    Console.WriteLine($" ____________________ Round: {roundNum} ____________________ ");
-                    Console.WriteLine($"{fighter1.name} {healthBar(fighter1)}               {fighter2.name} {healthBar(fighter2)}");
-                    monsterBlock.Attack(fighter2, fighter1);
-                    monsterBlock.Attack(fighter1, fighter2);
-                    roundNum += 1;
-
-                }
             }
-            while (fighter1.isDead == false || fighter2.isDead == false);
+
+
+
         }
     }
 }
