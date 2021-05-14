@@ -28,7 +28,8 @@ namespace ThunderDome
             Console.WriteLine("Your second pick is " + roster[secondpickButton].name);
 
             //Put both fighters into the ThunderDome
-            monsterBlock.ThunderDome(roster[firstpickButton], roster[secondpickButton]);
+            arena a = new arena();
+            a.ThunderDome(roster[firstpickButton], roster[secondpickButton]);
 
         }
     }
