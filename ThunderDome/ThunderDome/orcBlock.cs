@@ -1,20 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ThunderDome
+﻿namespace ThunderDome
 {
-    class orcBlock : monsterBlock
+    using System;
+
+    /// <summary>
+    /// subclass of StatBlock that supplies info necessary to make a orc.
+    /// </summary>
+    public class OrcBlock : StatBlock
     {
-        public orcBlock(string inName)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OrcBlock"/> class.
+        /// </summary>
+        /// <param name="inName"> Name of this instance of Orc.</param>
+        public OrcBlock(string inName)
         {
-            name = inName;
-            race = "Orc";
-            MaxHealth = 15;
-            currentHealth = MaxHealth;
-            armorClass = 13;
-            attackModifier = 5;
-            damageModifier = 3;
+            this.CreatureName = inName;
+            this.Race = "Orc";
+            this.MaxHealth = 15;
+            this.CurrentHealth = this.MaxHealth;
+            this.ArmorClass = 13;
+            this.AttackModifier = 5;
+            this.DamageModifier = 3;
         }
     }
 }

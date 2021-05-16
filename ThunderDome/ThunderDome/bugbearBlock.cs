@@ -1,20 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ThunderDome
+﻿namespace ThunderDome
 {
-    class bugbearBlock : monsterBlock
+    using System;
+
+    /// <summary>
+    /// subclass of StatBlock that supplies info necessary to make a bugbear.
+    /// </summary>
+    public class BugbearBlock : StatBlock
     {
-        public bugbearBlock(string inName)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BugbearBlock"/> class.
+        /// </summary>
+        /// <param name="inName">The name of this instance of Bugbear.</param>
+        public BugbearBlock(string inName)
         {
-            name = inName;
-            race = "Bugbear";
-            MaxHealth = 27;
-            currentHealth = MaxHealth;
-            armorClass = 16;
-            attackModifier = 4;
-            damageModifier = 2;
+            this.CreatureName = inName;
+            this.Race = "Bugbear";
+            this.MaxHealth = 27;
+            this.CurrentHealth = this.MaxHealth;
+            this.ArmorClass = 16;
+            this.AttackModifier = 4;
+            this.DamageModifier = 2;
         }
     }
 }

@@ -5,13 +5,15 @@ using System.IO;
 
 namespace ThunderDome
 {
-    class writeLog
+    /// <summary>
+    ///  This class updates the BattleLog.txt file with the results of each match
+    /// </summary>
+    public class WriteLog
     {
-        public static void logWinner(string winnerName, string loserName)
+        public static void LogResult(string winnerName, string loserName)
         {
             string logFileName = "BattleLog.txt";
             string fullPathToLog = Path.GetFullPath(logFileName);
-            //Console.WriteLine(fullPathToLog);
 
             try
             {
@@ -25,7 +27,7 @@ namespace ThunderDome
             }
             finally
             {
-                //Console.WriteLine("Executin finally block.");
+                // Console.WriteLine("Executin finally block.");
             }
         }
     }

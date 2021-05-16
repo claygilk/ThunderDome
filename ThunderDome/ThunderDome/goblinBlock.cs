@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ThunderDome
+﻿namespace ThunderDome
 {
-    class goblinBlock : monsterBlock
-    {
+    using System;
 
-        public goblinBlock(string inName)
+    /// <summary>
+    /// Subclass of StatBlock that supplies info necessary to make a goblin.
+    /// </summary>
+    public class GoblinBlock : StatBlock
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GoblinBlock"/> class.
+        /// </summary>
+        /// <param name="inName"> The name of this particular goblin.</param>
+        public GoblinBlock(string inName)
         {
-            name = inName;
-            race = "Goblin";
-            MaxHealth = 7;
-            currentHealth = MaxHealth;
-            armorClass = 15;
-            attackModifier = 4;
-            damageModifier = 2;
+            this.CreatureName = inName;
+            this.Race = "Goblin";
+            this.MaxHealth = 7;
+            this.CurrentHealth = this.MaxHealth;
+            this.ArmorClass = 15;
+            this.AttackModifier = 4;
+            this.DamageModifier = 2;
 
         }
 
