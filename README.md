@@ -10,4 +10,3 @@ Based on this [article](https://blog.markvincze.com/automated-portable-code-styl
 ```sh
 dotnet add ThunderDome/ThunderDome/ThunderDome.csproj package StyleCop.Analyzers
 ```
-xxx
