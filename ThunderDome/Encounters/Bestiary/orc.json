@@ -1,0 +1,151 @@
+{
+  "name": "Orc",
+  "source": "MM",
+  "page": 246,
+  "srd": true,
+  "otherSources": [
+    {
+      "source": "HotDQ"
+    },
+    {
+      "source": "LMoP"
+    },
+    {
+      "source": "PotA"
+    },
+    {
+      "source": "SKT"
+    },
+    {
+      "source": "TftYP"
+    },
+    {
+      "source": "ToA"
+    },
+    {
+      "source": "GoS"
+    },
+    {
+      "source": "DIP"
+    },
+    {
+      "source": "ERLW"
+    },
+    {
+      "source": "RMBRE"
+    },
+    {
+      "source": "EGW"
+    },
+    {
+      "source": "IDRotF"
+    }
+  ],
+  "size": "M",
+  "type": {
+    "type": "humanoid",
+    "tags": [
+      "orc"
+    ]
+  },
+  "alignment": [
+    "C",
+    "E"
+  ],
+  "ac": [
+    {
+      "ac": 13,
+      "from": [
+        "{@item hide armor|phb}"
+      ]
+    }
+  ],
+  "hp": {
+    "average": 15,
+    "formula": "2d8 + 6"
+  },
+  "speed": {
+    "walk": 30
+  },
+  "str": 16,
+  "dex": 12,
+  "con": 16,
+  "int": 7,
+  "wis": 11,
+  "cha": 10,
+  "skill": {
+    "intimidation": "+2"
+  },
+  "senses": [
+    "darkvision 60 ft."
+  ],
+  "passive": 10,
+  "languages": [
+    "Common",
+    "Orc"
+  ],
+  "cr": "1/2",
+  "trait": [
+    {
+      "name": "Aggressive",
+      "entries": [
+        "As a bonus action, the orc can move up to its speed toward a hostile creature that it can see."
+      ]
+    }
+  ],
+  "action": [
+    {
+      "name": "Greataxe",
+      "entries": [
+        "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. {@h}9 ({@damage 1d12 + 3}) slashing damage."
+      ]
+    },
+    {
+      "name": "Javelin",
+      "entries": [
+        "{@atk mw,rw} {@hit 5} to hit, reach 5 ft. or range 30/120 ft., one target. {@h}6 ({@damage 1d6 + 3}) piercing damage."
+      ]
+    }
+  ],
+  "environment": [
+    "arctic",
+    "forest",
+    "grassland",
+    "hill",
+    "mountain",
+    "swamp",
+    "underdark"
+  ],
+  "hasToken": true,
+  "soundClip": {
+    "type": "internal",
+    "path": "bestiary/orc.mp3"
+  },
+  "altArt": [
+    {
+      "name": "Iceshield Orc",
+      "source": "PotA"
+    }
+  ],
+  "traitTags": [
+    "Aggressive"
+  ],
+  "senseTags": [
+    "D"
+  ],
+  "languageTags": [
+    "C",
+    "O"
+  ],
+  "damageTags": [
+    "P",
+    "S"
+  ],
+  "miscTags": [
+    "MW",
+    "RW",
+    "THW"
+  ],
+  "hasFluff": true,
+  "hasFluffImages": true
+}
